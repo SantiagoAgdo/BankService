@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class BankService {
     @PostMapping("/process")
     public String process(@RequestBody CreditCardTransaction transaction) {
-        // Simple bank processing logic
+        if (transaction.getTransactionType() == null){
+            return "FAILED";
+        }
         return "SUCCESS";
     }
 }
